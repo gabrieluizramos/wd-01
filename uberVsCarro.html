@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+
+<h1>Uber vs Carro</h1>
+
+<script>
+    var mensagem
+    function pegaNumero() {
+        return parseFloat(prompt(mensagem).replace(",", "."))
+    }
+
+    // Pegando os dados do carro
+    mensagem = "Digite o valor do estacionamento"
+    var totalEstacionamento = pegaNumero() // 10
+
+    mensagem = "Digite a distancia percorrida"
+    var distancia = pegaNumero() // 20
+    
+    mensagem = "Quantos km seu carro faz por litro?"
+    var autonomia = pegaNumero() // 5
+
+    mensagem = "Qual o preço da gasolina atualmente?"
+    var precoLitroGasolina = pegaNumero() // 3
+
+    var totalGasolina =	(distancia / autonomia) * precoLitroGasolina
+    var totalCarro = totalGasolina + totalEstacionamento
+
+    // Pegando os dados do Uber
+    mensagem = "Qual a velocidade média do Uber?"
+    var velocidadeMedia = pegaNumero()
+    var tempoEmHoras = distancia / velocidadeMedia
+    var tempoEmMinutos = tempoEmHoras * 60
+
+    // Fórmula da apostila
+    var totalUber = 2 + distancia * 1.4 + tempoEmMinutos * 0.26;
+
+    document.write(`
+        <h2>Uber</h2>
+        <p>Total: R$ ${totalUber.toFixed(2).replace('.', ',')}</p>
+        <h2>Carro</h2>
+        Gasolina:	R$	${totalGasolina.toFixed(2).replace(".",	",")}
+        <br>
+        Estacionamento:	R$	${totalEstacionamento.toFixed(2).replace(".",	",")}
+        <br>
+        Total:	R$	${totalCarro.toFixed(2).replace(".",	",")}
+    `)
+</script>

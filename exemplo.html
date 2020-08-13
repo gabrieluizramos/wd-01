@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+
+
+
+<script>
+    // declaração ou assinatura função
+    function pulaLinha() { // corpo da função
+        document.write('<br>')
+    }
+    function desenhaDivisor() {
+        document.write('<hr>')
+    }
+
+    var mensagem
+
+    function pegaNumero() {
+        var numero = parseFloat(prompt(mensagem).replace(",", "."))
+        return numero;
+    }
+
+    mensagem = "Digite o valor do estacionamento"
+    var totalEstacionamento = pegaNumero();
+
+    mensagem = "Digite a distancia percorrida"
+    var distancia = pegaNumero();
+
+    mensagem = "Quantos km seu carro faz por litro?"
+    var autonomia = pegaNumero();
+
+    document.write(`
+        estacionamento: R$ ${totalEstacionamento} <br>
+        distancia: ${distancia} km/h <br>
+        autonomia: ${autonomia} km/l <br>
+    `)
+</script>
