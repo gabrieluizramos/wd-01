@@ -2,31 +2,20 @@
 
 <h1>Uber vs Carro</h1>
 
+<script src="formataMoeda.js"></script>
+<script src="pegaNumero.js"></script>
 <script>
-    var mensagem
-    function pegaNumero() {
-        return parseFloat(prompt(mensagem).replace(",", "."))
-    }
-
     // Pegando os dados do carro
-    mensagem = "Digite o valor do estacionamento"
-    var totalEstacionamento = pegaNumero() // 10
-
-    mensagem = "Digite a distancia percorrida"
-    var distancia = pegaNumero() // 20
-    
-    mensagem = "Quantos km seu carro faz por litro?"
-    var autonomia = pegaNumero() // 5
-
-    mensagem = "Qual o preço da gasolina atualmente?"
-    var precoLitroGasolina = pegaNumero() // 3
+    var totalEstacionamento = pegaNumero("Digite o valor do estacionamento") // 10
+    var distancia = pegaNumero("Digite a distancia percorrida") // 20
+    var autonomia = pegaNumero("Quantos km seu carro faz por litro?") // 5
+    var precoLitroGasolina = pegaNumero("Qual o preço da gasolina atualmente?") // 3
 
     var totalGasolina =	(distancia / autonomia) * precoLitroGasolina
     var totalCarro = totalGasolina + totalEstacionamento
 
     // Pegando os dados do Uber
-    mensagem = "Qual a velocidade média do Uber?"
-    var velocidadeMedia = pegaNumero()
+    var velocidadeMedia = pegaNumero("Qual a velocidade média do Uber?")
     var tempoEmHoras = distancia / velocidadeMedia
     var tempoEmMinutos = tempoEmHoras * 60
 
@@ -35,12 +24,12 @@
 
     document.write(`
         <h2>Uber</h2>
-        <p>Total: R$ ${totalUber.toFixed(2).replace('.', ',')}</p>
+        <p>Total: ${formataMoeda(totalUber)}</p>
         <h2>Carro</h2>
-        Gasolina:	R$	${totalGasolina.toFixed(2).replace(".",	",")}
+        Gasolina: ${formataMoeda(totalGasolina)}
         <br>
-        Estacionamento:	R$	${totalEstacionamento.toFixed(2).replace(".",	",")}
+        Estacionamento: ${formataMoeda(totalEstacionamento)}
         <br>
-        Total:	R$	${totalCarro.toFixed(2).replace(".",	",")}
+        Total: ${formataMoeda(totalCarro)}
     `)
 </script>

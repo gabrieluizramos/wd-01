@@ -2,9 +2,10 @@
 
 <h1>Calculadora de IMC</h1>
 
+<script src="pegaNumero.js"></script>
 <script>
-    var peso = 60
-    var altura = 1.65
+    var peso = pegaNumero("Digite seu peso")
+    var altura = pegaNumero("Digite sua altura")
     var imc = (peso / (altura * altura));
 
     document.write('O seu IMC é ' + imc)
