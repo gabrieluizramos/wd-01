@@ -2,17 +2,78 @@
 
 <h1>Cadastro Academia Caelum</h1>
 
+
+Nome <br>
+<input type="text" id="nome" />
+<br>
+<br>
+
+Peso <br>
+<input type="text" id="peso" />
+<br>
+<br>
+
+Altura <br>
+<input type="text" id="altura" />
+<br>
+<br>
+
+Data de Nascimento <br>
+<input type="text" id="dataDeNascimento" />
+<br>
+<br>
+
+<input type="checkbox" id="campoProblemasCardiacos" /> Tem problemas cardíacos?
+<br>
+<br>
+
+<button onclick="exibeIdade()" id="dispara">enviar</button>
+
+<script src="arquivos-apostila/js/mostra.js"></script>
+<script src="arquivos-apostila/js/libIdade.js"></script>
 <script src="pegaNumero.js"></script>
 <script>
-    var nome = prompt("Digite seu nome");
-    var peso = pegaNumero("Digite seu peso em kg");
-    var altura = pegaNumero("Digite sua altura em metros");
-    var dataDeNascimento = prompt("Digite sua data de nascimento");
+    var fichas = 0;
+    function exibeIdade() {
+        fichas = fichas + 1;
+        // var nome = prompt("Digite seu nome");
+        // var peso = pegaNumero("Digite seu peso em kg");
+        // var altura = pegaNumero("Digite sua altura em metros");
+        var diaMesAno = dataDeNascimento.value.split('/');
+        var dia = diaMesAno[0];
+        var mes = diaMesAno[1];
+        var ano = diaMesAno[2];
 
-    document.write(`
-        Nome: ${nome} <br>
-        Peso: ${peso} kg <br>
-        Altura: ${altura} m <br>
-        Data de nascimento: ${dataDeNascimento} <br>
-    `);
+        // também poderia ser
+        // var idade = calculaIdade(diaMesAno[0], diaMesAno[1], diaMesAno[2]);
+        var idade = calculaIdade(dia, mes, ano);
+        var problemasCardiacos = campoProblemasCardiacos.checked
+        var menorDe16 = idade < 16;
+
+        var mensagem;
+        if (problemasCardiacos || menorDe16) {
+            mensagem = 'Você precisa de acompanhamento médico';
+        }
+        if (!problemasCardiacos && !menorDe16) {  
+            mensagem = 'Você NÃO precisa de acompanhamento médico';
+        }
+
+        if (fichas == 1) {
+            mostra(`
+                <h2>Fichas</h2>
+            `)
+        }
+
+        mostra(`
+            <hr>
+                <h3>Ficha ${fichas}</h3>
+            <hr>
+            Nome: ${nome.value} <br>
+            Peso: ${peso.value} kg <br>
+            Altura: ${altura.value} m <br>
+            Data de nascimento: ${dataDeNascimento.value} <br>
+            Idade: ${idade} <br>
+            ${mensagem}
+        `);
+    }
 </script>

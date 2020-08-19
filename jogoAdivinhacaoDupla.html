@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+
+<h1>Jogo de adivinhar</h1>
+
+<br>
+<br>
+
+<button onclick="jogar()">Jogar</button>
+
+<script src="pegaNumero.js"></script>
+<script src="arquivos-apostila/js/mostra.js"></script>
+<script>
+    var jogoAtual = 0;
+    function jogar() {
+        jogoAtual = jogoAtual + 1;
+
+        var numeroJogador1 = pegaNumero("Jogador 1: digite o numero a ser adivinhado");
+        var numeroJogador2 = pegaNumero("Jogador 2: tente adivinhar o numero que o jogador 1 informou");
+
+        if (numeroJogador1 == numeroJogador2) {
+            mostra(
+                `Jogo ${jogoAtual}: Acertou! O numero era ${numeroJogador1}`
+            )
+        }
+        if (numeroJogador1 != numeroJogador2) {
+            mostra(
+                `Jogo ${jogoAtual}: Errou! O numero era ${numeroJogador1}`
+            )
+        }
+    }
+</script>
