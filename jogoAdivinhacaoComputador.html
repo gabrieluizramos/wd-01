@@ -1,0 +1,32 @@
+<meta charset="utf-8">
+
+<h1>Jogo de adivinhar</h1>
+<h2>Jogue esse jogo diretamente com o seu computador</h2>
+
+<br>
+<br>
+
+<button onclick="jogar()">Jogar</button>
+
+<script src="pegaNumero.js"></script>
+<script src="arquivos-apostila/js/mostra.js"></script>
+<script>
+    var jogoAtual = 0;
+    function jogar() {
+        jogoAtual = jogoAtual + 1;
+
+        var numeroAleatorio = parseInt(Math.random() * 10);
+        var numeroJogador = pegaNumero("Tente adivinhar um numero");
+
+        if (numeroAleatorio == numeroJogador) {
+            mostra(
+                `Jogo ${jogoAtual}: Acertou! O numero era ${numeroAleatorio}`
+            )
+        }
+        if (numeroAleatorio !== numeroJogador) {
+            mostra(
+                `Jogo ${jogoAtual}: Errou! O numero era ${numeroAleatorio}`
+            )
+        }
+    }
+</script>
