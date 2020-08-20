@@ -18,12 +18,40 @@
         var numeroAleatorio = parseInt(Math.random() * 10);
         var numeroJogador = pegaNumero("Tente adivinhar um numero");
 
+        // ternario
+        // var mensagem = (numeroAleatorio == numeroJogador) ? 'Acertou' : 'Errow'
+        // verificacao ? valor_se_for_verdadeiro : valor_se_for_falso
+        // mostra(mensagem)
+
+        // if(numeroJogador < 0 || numeroJogador > 10) {
+        //     numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+
+        //     if(numeroJogador < 0 || numeroJogador > 10) {
+        //         numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        //     }
+        // }
+
+        var tentativas = 0;
+        while ((numeroJogador < 0 || numeroJogador > 10)) {
+            if (tentativas === 3) {
+                mostra('Fim de jogo, ja execedeu o numero maximo de tentativas')
+                break
+            }
+
+            tentativas = tentativas + 1;
+            
+            numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        }
+
+        // do {
+        //     numeroJogador = pegaNumero("Errou, o numero tem que estar entre 0 e 10, tenta novamente");
+        // } while(numeroJogador < 0 || numeroJogador > 10)
+
         if (numeroAleatorio == numeroJogador) {
             mostra(
                 `Jogo ${jogoAtual}: Acertou! O numero era ${numeroAleatorio}`
             )
-        }
-        if (numeroAleatorio !== numeroJogador) {
+        } else {
             mostra(
                 `Jogo ${jogoAtual}: Errou! O numero era ${numeroAleatorio}`
             )
