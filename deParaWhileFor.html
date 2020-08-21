@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+
+<script>
+    var contador = 0;
+    
+    console.log('Iniciando while');
+    while(contador <= 10) {
+        console.log(contador);
+        // contador = contador + 1;
+        contador++;
+    }
+</script>
+
+<script>
+    // 1 informacao: variavel de controle
+    // 2 informacao: definir regra um limite
+    // 3 informacao: incrementar as variaveis de controle
+    // for(criar variaveis de controle; regra de limite; incrementar variaveis de controle) {}
+    console.log('Iniciando for');
+    for (var contadorFor = 10; contadorFor >= 0; contadorFor--) {
+        console.log(contadorFor);
+    }
+</script>
+
+
+<script>
+    var gatos = ['Lora', 'Logan', 'LeBeau'];
+
+    function exibeDadosArray(arr) {
+        console.log('iniciando funcao exibeDados');
+        for(var contador = 0; contador < arr.length; contador++) {
+            console.log(`${contador + 1} valor é: ${arr[contador]}`)
+        }
+        console.log('finalizando funcao exibeDados');
+    }
+
+    exibeDadosArray(gatos)
+</script>
